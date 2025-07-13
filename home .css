@@ -1,0 +1,236 @@
+body{
+ font-family: "Comfortaa", sans-serif;
+ background-color: #F8F8FF;
+}
+.header{
+    background-color:#476EF7 ;
+    color: white;
+    padding-left:25px ;
+    font-size: x-large;
+}
+.form{
+    display: flex;
+    justify-content: space-around;
+    width:95% ;
+    margin: auto;
+    border-radius: 8px;
+    box-shadow: 7px 7px 8px 0 #476EF7;
+    margin-top: 15px;
+    padding:20px 0px ;
+    
+}
+#theme-toggle{
+    position: absolute;
+    top: 22px;
+    right: 10px;
+    background-color: white;
+    color:#476ef7;
+    font-size: small;
+    font-weight: 600;
+    box-shadow:2px 7px 7px rgba(0,0,0,0.5);
+    border-radius: 100%;
+    padding-top: 7px;
+}
+
+
+#add-button{
+    background-color: #476EF7;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    font-size: x-large;
+    font-weight: 600;
+    color: white;
+}
+.input{
+    width: 27%;
+}
+.cards{
+  display: flex;
+  margin: auto;
+  width: 90%;
+  margin-top: 15px;
+  justify-content: space-around;
+}
+.card{
+  background: #476EF7;
+  border: 0px;
+  height: 150px;
+}
+.card-body{
+  color: #F8F8FF;
+
+}
+
+.transaction-table{
+  width: 95%;
+  margin: auto;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-weight: 800;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  padding: 0px;
+}
+.header-row{
+  background-color: #476EF7;
+  color: #F8F8FF;
+}
+.header-row th{
+  padding: 15px 10px;
+  padding-left:10px ;
+}
+#delete{
+  height: 50px;
+  width: 50px;
+}
+.btn svg {
+  transition: transform 0.2s;
+}
+
+.btn:hover svg {
+  transform: scale(1.5);
+  fill: darkred;
+}
+body.light-mode {
+  background-color: #F8F8FF;
+  color: black;
+}
+
+/* 🔥 Dark Mode - Modern UI Inspired */
+body.dark-mode {
+  background-color: #121212;
+  color: #e5e5e5;
+  transition: all 0.3s ease;
+}
+
+/* Header */
+body.dark-mode .header {
+  background-color: #1E1E2F;
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+  border-bottom: 1px solid #2D2D3D;
+}
+body.dark-mode  #tracker{
+    color: #A0A0FF;
+}
+
+/* Cards */
+body.dark-mode .card {
+  background: #2D2D3D;
+  color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* Card Text */
+body.dark-mode .card-title {
+  color: #A0A0FF;
+}
+
+/* Form Container */
+body.dark-mode .form {
+  background-color: #1E1E2F;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+}
+
+/* Form Controls */
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+  background-color: #2A2A3C;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+body.dark-mode .form-control::placeholder {
+  color: #aaa;
+}
+
+/* Add Button */
+body.dark-mode #add-button {
+  background-color: #4D67FF;
+  color: white;
+  border: none;
+  box-shadow: 0 2px 8px rgba(77, 103, 255, 0.4);
+  transition: background-color 0.2s ease;
+}
+
+body.dark-mode #add-button:hover {
+  background-color: #657dff;
+}
+
+/* Theme Toggle */
+body.dark-mode #theme-toggle {
+  background-color: #292944;
+  color: #A0A0FF;
+  border: none;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Table */
+body.dark-mode .transaction-table {
+  background-color: #1F1F30;
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+}
+
+body.dark-mode .header-row {
+  background-color: #343456;
+  color: #A0A0FF;
+}
+
+/* Table Hover */
+body.dark-mode tr:hover {
+  background-color: #2A2A3C;
+}
+
+* {
+  transition: background-color 0.1s ease-in, color 0.1s ease-out;
+}
+
+
+
+
+@media only screen and (max-width:768px){
+  .header{
+    background-color:#476EF7 ;
+    color: white;
+    padding-left:25px ;
+    font-size: large;
+}
+.form{
+    display: flex;
+  flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 15px;
+    
+}
+  .input{
+    width: 75%;
+  }
+
+  #add-button{
+    background-color: #476EF7;
+    height: 50px;
+    width: 75%;
+    border-radius: 8px;
+  }
+
+ .cards{
+  display: flex;
+  margin: auto;
+  width: 90%;
+  margin-top: 15px;
+  margin-bottom: 50px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+ 
+}
+
+
