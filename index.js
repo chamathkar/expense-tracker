@@ -203,31 +203,18 @@ function filterByDate() {
 }
 
 function exportCSV() {
-  let rows = [["Amount", "Transaction Type", "Transaction Date"]]; // header
+  const csv = [
+    ['Amount', 'Transaction Type'],
+    ...Array.from(table.rows).slice(1).map(row => [
+      row.cells[0]?.textContent.trim() || '',
+      row.cells[1]?.textContent.trim() || ''
+    ])
+  ].map(row => row.join(',')).join('\n');
 
-  // Loop through table rows, skip the header (rowIndex 0)
-  for (let i = 1; i < table.rows.length; i++) {
-    const cols = table.rows[i].cells;
-    const amount = cols[0].innerText;
-    const type = cols[1].innerText;
-    const date = cols[2].innerText;
-
-    rows.push([amount, type, date]);
-  }
-
-  // Convert to CSV format
-  let csvContent = rows.map(e => e.join(",")).join("\n");
-
-  // Create downloadable blob
-  const blob = new Blob([csvContent], { type: "text/csv" });
-  const url = URL.createObjectURL(blob);
-
-  // Create and click a temporary download link
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "transactions.csv";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(new Blob(["\uFEFF" + csv], { type: 'text/csv' }));
+  link.download = 'transactions.csv';
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(link.href), 100);
 }
 
