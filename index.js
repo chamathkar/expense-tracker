@@ -10,6 +10,8 @@ function toggleTheme() {
   const mode = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
   localStorage.setItem('theme', mode);
   document.getElementById('theme-toggle').innerText = mode === 'light' ? 'Dark' : 'Light';
+  if (chart) renderChart();
+
 };
 
 // On page load
@@ -56,6 +58,8 @@ function handleClick() {
   document.getElementsByClassName('amount')[0].value = '';
   document.getElementsByClassName('value')[0].value = 'Transaction type';
   document.getElementsByClassName('category')[0].value = 'Category';
+  renderChart();
+
 }
 
 function renderTransaction(transaction) {
@@ -217,4 +221,42 @@ function exportCSV() {
   link.click();
   setTimeout(() => URL.revokeObjectURL(link.href), 100);
 }
+
+let chart; // Global chart instance
+
+function renderChart() {
+  const ctx = document.getElementById('expenseChart').getContext('2d');
+  const incomeTotal = totalMoney;
+  const expenseTotal = totalSpend;
+
+  if (chart) {
+    chart.destroy(); // Clear previous chart before re-rendering
+  }
+
+ chart = new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: ['Income', 'Expense'],
+    datasets: [{
+      label: 'Money Flow',
+      data: [incomeTotal, expenseTotal],
+      backgroundColor: ['#4CAF50', '#F44336'],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false, // Allow dynamic sizing
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          color: document.body.classList.contains('dark-mode') ? '#fff' : '#000'
+        }
+      }
+    }
+  }
+});
+}
+
 
