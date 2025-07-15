@@ -35,7 +35,7 @@ function handleClick() {
   let category = document.getElementsByClassName('category')[0].value;
   let value = document.getElementsByClassName('value')[0].value;
   
-  if (!date || isNaN(amount) || !value || value === "Transaction type" || category === "Category") {
+  if (!date || isNaN(amount) || !value || value === "Transaction type" || category === "Category" || amount<0) {
     alert('Please fill all fields with valid values');
     return;
   }
@@ -59,7 +59,6 @@ function handleClick() {
   document.getElementsByClassName('value')[0].value = 'Transaction type';
   document.getElementsByClassName('category')[0].value = 'Category';
   renderChart();
-
 }
 
 function renderTransaction(transaction) {
@@ -133,6 +132,7 @@ function updateTotals() {
   document.getElementById('income').innerText = totalMoney;
   document.getElementById('expense').innerText = totalSpend;
   document.getElementById('balance').innerText = balance;
+  renderChart();
 }
 
 function filterTransactions(type) {
@@ -149,6 +149,7 @@ function filterTransactions(type) {
   // Render filtered transactions
   filteredTransactions.forEach(renderTransaction);
   updateFilteredTotals(filteredTransactions);
+  renderChart()
 }
 
 function updateFilteredTotals(filteredTransactions) {
@@ -166,6 +167,7 @@ function updateFilteredTotals(filteredTransactions) {
   document.getElementById('income').innerText = filteredMoney;
   document.getElementById('expense').innerText = filteredSpend;
   document.getElementById('balance').innerText = filteredMoney - filteredSpend;
+  renderChart()
 }
 
 function filterByDate() {
@@ -204,6 +206,7 @@ function filterByDate() {
 
   filtered.forEach(renderTransaction);
   updateFilteredTotals(filtered);
+  renderChart();
 }
 
 function exportCSV() {
